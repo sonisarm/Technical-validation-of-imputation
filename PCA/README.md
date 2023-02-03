@@ -1,1 +1,0 @@
- R code to compute a PCA from individuals sequenced at both high and low-coverage as a first view to look at imputation success. We plot high-coverage individuals (big squares) to compute the real distance between the samples, and reproject them at low-coverage (small circles)  to see how far they fall from the high-coverage versions.
