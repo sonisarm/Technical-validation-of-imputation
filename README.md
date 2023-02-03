@@ -12,5 +12,5 @@ R code to compute a PCA from individuals sequenced at both high and low-coverage
 
 * Input: VCF containing samples in both high and low-coverage for one Chromosome (with different names, e.g. 'HC' and 'TC' suffix)
 * Script: ```1_PCA.R```
-* Output: Reprojected PCA ```Reprojected_PCA.png```
+* Output: Reprojected PCA ```1_Reprojected_PCA_Super-Scaffold_14.png```
 
