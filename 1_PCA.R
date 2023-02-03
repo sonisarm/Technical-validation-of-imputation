@@ -109,7 +109,7 @@ Type[temp=="HC"]=2
 Size = rep(.5, length(temp))
 Size[temp=="HC"]=2
 # 2) plot
-pdf("TECH Validation - PCA reprojection - samples ID.pdf")
+pdf("1_Reprojected_PCA_Super-Scaffold_14_v1.pdf")
 plot(ReprojectionAll$eigenvect[,1], ReprojectionAll$eigenvect[,2], col=col.list[as.integer(tab$pop)],  xlab="eigenvector 2", ylab="eigenvector 1", pch = (as.integer(tab$pop)%%25), cex = Size)
 #abline(v = 0)
 #abline(h = 0)
@@ -117,7 +117,7 @@ dev.off()
 
 
 library(ade4)
-pdf("TECH Validation - reprojection PCA.pdf")
+pdf("1_Reprojected_PCA_Super-Scaffold_14_v2.pdf")
 s.chull(ReprojectionAll$eigenvect[,c(1,2)], fac = tab$pop, label = NA)
 points(ReprojectionAll$eigenvect[,c(1,2)], pch = c(20, 0)[Type], cex = Size/2)
 dev.off()
