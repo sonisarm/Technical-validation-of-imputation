@@ -10,7 +10,7 @@ This repository tests the accuracy of imputation by comparing the results obtain
 
 R code to compute a PCA from individuals sequenced at both high and low-coverage as a first view to look at imputation success. We plot high-coverage individuals (big squares) to compute the real distance between the samples, and reproject them at low-coverage (small circles) to see how far they fall from the high-coverage versions.
 
-* Input: VCF containing samples in both high and low-coverage (with different names, e.g. 'HC' and 'TC' suffix)
+* Input: VCF containing samples in both high and low-coverage for one Chromosome (with different names, e.g. 'HC' and 'TC' suffix)
 * Script: ```1_PCA.R```
-* Output: ```Results_Sample_Switch.png```
+* Output: Reprojected PCA ```Reprojected_PCA.png```
 
