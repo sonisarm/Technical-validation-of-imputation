@@ -1,4 +1,4 @@
-# Technical validation imputation :computer:
+# Technical validation imputation  :repair:
 Author: Sonia Sarmiento
 
 ### This repository is a collection of resources and tools to use to assess the validity of imputation of low-coverage samples. 
