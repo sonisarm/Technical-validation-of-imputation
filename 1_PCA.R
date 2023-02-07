@@ -5,15 +5,11 @@
 ###            sequenced at  high & low-coverage.      ###
 ##########################################################
 
-rm(list=ls())
-setwd('/Users/soniasarmiento/Downloads/BarnOwl/PCA')
-
-
 # Load libraries
 library("SNPRelate")
 
-# Load data (VCF with all individuals that you want to compare)
-vcf.fn<-"HC_and_TECHALL_Super-Scaffold_14_replicatesonly_renamed.vcf.gz"
+# Load data (VCF with all individuals that you want to compare in both high and low coverage (with different names, e.g. IND1_HC, IND1_LC))
+vcf.fn<-"HighCov_and_LowCov_Super-Scaffold_14.vcf.gz" 
 
 #Produce GDS
 snpgdsVCF2GDS(vcf.fn, "ccm.gds",  method="biallelic.only")
