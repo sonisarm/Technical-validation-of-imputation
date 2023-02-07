@@ -1,8 +1,11 @@
+``` r
+
 ##########################################################
 ### Author: Sarmiento Cabello, Sonia                   ###
 ### Version: 1.0.                                      ###
 ### Objective: Compare genotypes between two VCFs.     ###
 ##########################################################
+``` 
 
 This code compares the genetic information of two VCF files. It was designed to
 assess the accuracy of imputed low-coverage sequences in comparison to high-coverage
