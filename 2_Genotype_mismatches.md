@@ -129,9 +129,9 @@ pos <- SNPs_gds1$position
 mdf <- as.data.frame(matrix(NA,nrow=nrow(int), ncol=nrow(geno_substract)))
 for(i in 1:nrow(int)){
   # Sum number of mismatches
-  mdf[i,] <- mismatch(geno_substract[,seq(df$start[i],df$end[i])]) * (100/win)
+  mdf[i,] <- mismatch(geno_substract[,seq(int$start[i],int$end[i])]) * (100/win)
   # Extract mean position of SNPs in the window
-  pos[i] <- mean(SNPs_gds1$position[df$start[i]:df$end[i]])
+  pos[i] <- mean(SNPs_gds1$position[int$start[i]:int$end[i]])
 }
 names(mdf) <- sm$sample.id
 head(mdf)
@@ -171,6 +171,15 @@ qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
 col_vector = unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
 pie(rep(1,n), col=sample(col_vector, n))
 
+# Function
+# transparency color function
+add.alpha <- function(col, alpha=1){
+  if(missing(col))
+    stop("Please provide a vector of colours.")
+  apply(sapply(col, col2rgb)/255, 2, 
+        function(x) 
+          rgb(x[1], x[2], x[3], alpha=alpha))  
+}
 
 # Plot separating by individuals
 jpeg(paste0('Mismatches between high- and imputed low-coverage - colors - separated indvs.jpg'), width=12,height=6,unit='in',quality = 1000,res=800)
