@@ -149,8 +149,8 @@ dev.off()
 ``` 
 
 In my dataset, I found a clear distinction between indidividuals with high (15%) 
-and low (5%) proportion of mismatches. It is meaningful to plot these separate
-groups of individuals separately. 
+and low (5%) proportion of mismatches. It is meaningful to plot the individuals 
+separately and check if we see any differences.
 
 ``` r
 
