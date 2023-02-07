@@ -14,3 +14,11 @@ PCA comparison can evaluate the accuracy of imputation in low-coverage samples b
 * Output: Reprojected PCA ```1_Reprojected_PCA_Super-Scaffold_14.png```
 
 In the results, high-coverage individuals are depicted as big squares and the low-coverage in small circles (in our data, some samples have 3 low-coverage sequences (triplicates) and other 1 (duplicates)). 
+
+
+### Section 2: Comparison of genotypes along the chromosome
+
+* Input: High-Coverage and Low-Coverage GDS for replicate individuals
+* Script: ```2_Genotype_mismatches.md```
+* Output: Distribution of mismatches and missing values (```2_Mismatches and missing genotypes distribution.jpg```) and Genotype mismatches along the Super-Scaffold_14 (biggest scaffold in barn owls) for individuals with high and low proportion of mismatches separately (```2_Mismatches between high- and imputed low-coverage - colors - separated indvs.jpg```).
+
