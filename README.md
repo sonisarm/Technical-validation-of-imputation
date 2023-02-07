@@ -17,6 +17,7 @@ In the results, high-coverage individuals are depicted as big squares and the lo
 
 
 ### Section 2: Comparison of genotypes along the chromosome
+This code is designed to compare genotypes between two VCF files. Specifically, the goal is to evaluate the accuracy imputation by comparing imputed low-coverage sequences to high-coverage sequences of the same individual. 
 
 * Input: High-Coverage and Low-Coverage GDS for replicate individuals
 * Script: ```2_Genotype_mismatches.md```
