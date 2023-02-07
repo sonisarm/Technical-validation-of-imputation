@@ -23,3 +23,13 @@ This code is designed to compare genotypes between two VCF files. Specifically, 
 * Script: ```2_Genotype_mismatches.md```
 * Output: Distribution of mismatches and missing values (```2_Mismatches and missing genotypes distribution.jpg```) and Genotype mismatches along the Super-Scaffold_14 (biggest scaffold in barn owls) for individuals with high and low proportion of mismatches separately (```2_Mismatches between high- and imputed low-coverage - colors - separated indvs.jpg```).
 
+**IMPORTANT**: input must include only SNPs existing in both VCFs. For this purpose, we can use the following code in bash:
+
+```bash
+# Keep intersect snps of unrelated
+bcftools isec -n=2 -w1 -O z -o highcoverage_intersect.vcf.gz highcoverage.vcf.gz lowcoverage.vcf.gz
+
+# Keep intersect snps of related
+bcftools isec -n=2 -w1 -O z -o lowcoverage_intersect.vcf.gz lowcoverage.vcf.gz highcoverage.vcf.gz
+
+```
