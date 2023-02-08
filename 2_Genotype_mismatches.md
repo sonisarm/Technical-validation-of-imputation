@@ -206,7 +206,7 @@ add.alpha <- function(col, alpha=1){
 jpeg(paste0('Mismatches between high- and imputed low-coverage - colors - separated indvs.jpg'), width=12,height=6,unit='in',quality = 1000,res=800)
 par(mfrow=c(2,1))
 
-plot(0,pch='',xlab=paste0(win,'-snps window index (ss14)'),ylab='% mismatching sites',
+plot(0,pch='',xlab=paste0(win,'-snps window index (ss14)'),ylab='% mismatches',
      xlim=c(0,nrow(int)), col = col_vector,
      ylim=c(0,max(mdf_top)), 
      main = "Mismatches between high- and imputed low-coverage (indv. with high missing rates)",
@@ -217,7 +217,7 @@ for(i in 1:ncol(mdf_top)){
 }
 legend('topleft',col=col_vector,lwd=c(2,2),legend=topindv, cex = 0.25)
 
-plot(0,pch='',xlab=paste0(win,'-snps window index (ss14)'),ylab='% mismatching sites',
+plot(0,pch='',xlab=paste0(win,'-snps window index (ss14)'),ylab='% mismatches',
      xlim=c(0,nrow(int)), col = col_vector,
      ylim=c(0,max(mdf_bottom)), 
      main = "Mismatches between high- and imputed low-coverage (indv. with low missing rates)",
