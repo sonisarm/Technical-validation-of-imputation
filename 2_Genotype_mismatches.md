@@ -104,7 +104,7 @@ the proportion.
 # Substract genotypes and square. 
 geno_substract <- (geno1 - geno2)^2   # Mismatch is indicated with a 1.
 
-# Define functions
+### Define functions
   # Count mismatches
 count.mismatch <- function(row){ length(which(row == 1))}
 
@@ -112,6 +112,16 @@ count.mismatch <- function(row){ length(which(row == 1))}
 mismatch <- function(geno.chunk){
   return(apply(geno.chunk,1,FUN=count.mismatch))
 }
+
+# Count mismatches
+count.NA <- function(row){ length(which(is.na(row)))}
+       
+# Create dataframe with counts
+NonApp <- function(geno.chunk){
+  return(apply(geno.chunk,1,FUN=count.NA))
+}
+
+### 
 
 # Set SNP windows
 win <- 1000
@@ -125,24 +135,35 @@ int <- data.frame('start'=seq(1,round.down,win),
 maxsnps <- nrow(SNPs_gds1)
 pos <- SNPs_gds1$position
 
-#empty dataframe with 1 row / window SNP interval and 1 col / sample 
+#empty dataframes with 1 row / window SNP interval and 1 col / sample 
 mdf <- as.data.frame(matrix(NA,nrow=nrow(int), ncol=nrow(geno_substract)))
+NonAppl <- as.data.frame(matrix(NA,nrow=nrow(int), ncol=nrow(geno_substract)))
+
+# Loop through windows obtaining no. of NAs (NonAppl) and mismatches (mdf)
 for(i in 1:nrow(int)){
+  # Sum number of NAs
+  NonAppl[i,] <-  NonApp(geno_substract[,seq(int$start[i],int$end[i])])
   # Sum number of mismatches
-  mdf[i,] <- mismatch(geno_substract[,seq(int$start[i],int$end[i])]) * (100/win)
+  mdf[i,] <- mismatch(geno_substract[,seq(int$start[i],int$end[i])])
   # Extract mean position of SNPs in the window
   pos[i] <- mean(SNPs_gds1$position[int$start[i]:int$end[i]])
 }
-names(mdf) <- sm$sample.id
-head(mdf)
+
+# To make a percentage, multiply by 100 and divide by window size (minus NAs)
+# NAs have not been accounted for (it's not a match) and could bias our results
+mdf_final <- mdf * 100/(win-NonAppl)
+
+names(mdf_final) <- sm$sample.id
+head(mdf_final)
+
 
 # Plot mismatches in snps windows:
 jpeg(paste0('Mismatches between high- and imputed low-coverage.jpg'), width=12,height=6,unit='in',quality = 1000,res=800)
 par(mfrow=c(1,1))
 plot(0,pch='',xlab=paste0(win,'-snps window index'),ylab='% mismatching sites', xlim=c(0,nrow(int)),
-     ylim=c(0,max(mdf)),sub='ss14', main = "Mismatches between high- and imputed low-coverage")
-for(i in 1:ncol(mdf)){
-  lines(mdf[,i])
+     ylim=c(0,max(mdf_final)),sub='ss14', main = "Mismatches between high- and imputed low-coverage")
+for(i in 1:ncol(mdf_final)){
+  lines(mdf_final[,i])
 }
 dev.off()
 
@@ -162,8 +183,8 @@ bottomindv <- result_percentage %>% filter(mismatch < 14)
 bottomindv <- rownames(bottomindv)
 
 # Get mismatching values accordingly
-mdf_top <- mdf[, topindv]
-mdf_bottom <- mdf[, bottomindv]
+mdf_top <- mdf_final[, topindv]
+mdf_bottom <- mdf_final[, bottomindv]
 
 # Set colors with RColorBrewer package to differentiate between individuals
 n <- ncol(mdf_top)
