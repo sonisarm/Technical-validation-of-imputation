@@ -13,7 +13,7 @@ PCA comparison can evaluate the accuracy of imputation in low-coverage samples b
 * Script: ```1_PCA.R```
 * Output: Reprojected PCA
 
-In the results, high-coverage individuals are depicted as big squares and the low-coverage in small circles (in our data, some samples have 3 low-coverage sequences (triplicates) and other 1 (duplicates)). 
+In the results, high-coverage individuals are depicted as big squares and the low-coverage in small circles.
 
 
 ### Section 2: Comparison of genotypes along the chromosome
