@@ -11,7 +11,7 @@ PCA comparison can evaluate the accuracy of imputation in low-coverage samples b
 
 * Input: VCF containing samples in both high and low-coverage for one Chromosome (with different names, e.g. 'HC' and 'TC' suffix)
 * Script: ```1_PCA.R```
-* Output: Reprojected PCA ```1_Reprojected_PCA_Super-Scaffold_14.png```
+* Output: Reprojected PCA
 
 In the results, high-coverage individuals are depicted as big squares and the low-coverage in small circles (in our data, some samples have 3 low-coverage sequences (triplicates) and other 1 (duplicates)). 
 
@@ -21,7 +21,7 @@ This code is designed to compare genotypes between two VCF files. Specifically, 
 
 * Input: High-Coverage and Low-Coverage GDS for replicate individuals
 * Script: ```2_Genotype_mismatches.md```
-* Output: Distribution of mismatches and missing values (```2_Mismatches and missing genotypes distribution.jpg```) and Genotype mismatches along the Super-Scaffold_14 (biggest scaffold in barn owls) for individuals with high and low proportion of mismatches separately (```2_Mismatches between high- and imputed low-coverage - colors - separated indvs.jpg```).
+* Output: Distribution of mismatches and missing values and Genotype mismatches along the genome. 
 
 **IMPORTANT**: input must include only SNPs existing in both VCFs. For this purpose, we can use the following code in bash:
 
