@@ -213,7 +213,7 @@ plot(0,pch='',xlab=paste0(win,'-snps window index (ss14)'),ylab='% mismatches',
      cex.lab=0.7, cex.axis=0.7, cex.main=1)
 
 for(i in 1:ncol(mdf_top)){
-  lines(mdf_top[,i], col=add.alpha(col_vector[i],.3))
+  lines(mdf_top[,i], col=add.alpha(col_vector[i],.8))
 }
 legend('topleft',col=col_vector,lwd=c(2,2),legend=topindv, cex = 0.25)
 
@@ -223,7 +223,7 @@ plot(0,pch='',xlab=paste0(win,'-snps window index (ss14)'),ylab='% mismatches',
      main = "Mismatches between high- and imputed low-coverage (indv. with low missing rates)",
      cex.lab=0.7, cex.axis=0.7, cex.main=1)
 for(i in 1:ncol(mdf_bottom)){
-  lines(mdf_bottom[,i], col=add.alpha(col_vector[i],.3))
+  lines(mdf_bottom[,i], col=add.alpha(col_vector[i],.8))
 }
 legend('topleft',col=col_vector,lwd=c(2,2),legend=bottomindv, cex = 0.25)
 dev.off()
