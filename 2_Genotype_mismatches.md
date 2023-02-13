@@ -69,7 +69,11 @@ rownames(result) <- rownames(geno1)
 colnames(mis)[1] <- 'missing genotypes'
 rownames(mis) <- rownames(geno1)
 
-result_percentage <- result/675410*100  # Here I would have to remove the number of missing per individual from the division 
+# Substract total no. of snps - missing snps
+snps <- matrix(nrow = 32)
+snps <- 675410-mis
+# Calculate the percentage of mismatches and missigness
+result_percentage <- result/snps*100
 missing_percentage <- mis/675410*100
 
 # Plot
