@@ -69,7 +69,7 @@ rownames(result) <- rownames(geno1)
 colnames(mis)[1] <- 'missing genotypes'
 rownames(mis) <- rownames(geno1)
 
-result_percentage <- result/675410*100
+result_percentage <- result/675410*100  # Here I would have to remove the number of missing per individual from the division 
 missing_percentage <- mis/675410*100
 
 # Plot
