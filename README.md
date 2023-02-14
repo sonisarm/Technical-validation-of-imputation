@@ -20,9 +20,19 @@ In the results, high-coverage individuals are depicted as big squares and the lo
 ### Section 2: Comparison of genotypes along the chromosome
 This code is designed to compare genotypes between two VCF files. Specifically, the goal is to evaluate the accuracy imputation by comparing imputed low-coverage sequences to high-coverage sequences of the same individual. 
 
-* Input: High-Coverage and Low-Coverage GDS* for replicate individuals
+* Input: High-Coverage and Low-Coverage GDS for replicate individuals
+
+To obtain GDS, you can load gcc and r, open R, and run the following command:
+```r
+library(SNPRelate) 
+vcf <- 'name.vcf.gz'
+snpgdsVCF2GDS(vcf,'name.gds')
+```
+
 * Script: ```2_Genotype_mismatches.md```
 * Output: Distribution of mismatches and missing values and Genotype mismatches along the genome. 
+
+
 
 **IMPORTANT**: input must include only SNPs existing in both VCFs. For this purpose, we can use the following code in bash:
 ```bash
@@ -34,9 +44,3 @@ bcftools isec -n=2 -w1 -O z -o lowcoverage_intersect.vcf.gz lowcoverage.vcf.gz h
 
 ```
 
-* To obtain GDS, you can load gcc and r, open R, and run the following command:
-```r
-library(SNPRelate) 
-vcf <- 'name.vcf.gz'
-snpgdsVCF2GDS(vcf,'name.gds')
-```
